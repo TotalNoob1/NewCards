@@ -24,7 +24,13 @@ function shuffle(array) {
 
     return array;
 }
-
+$(".deck").click(function(){
+  if( event.target.nodeName === 'LI'){
+    event.target.classList.add('open');
+    event.target.classList.add('show');
+    console.log(123);
+  }
+});
 
 /*
  * set up the event listener for a card. If a card is clicked:
