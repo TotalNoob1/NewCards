@@ -33,15 +33,16 @@ function mismatch() {
       two[0].classList.remove('show','open','check');
     }
 }
-
-
+let moves = document.getElementsByClassName('moves');
+let clicks = 0;
 $(".deck").click(function(){
   if( event.target.nodeName === 'LI')//check to make sure it a card
   {
     clickedcards.push(event.target);//add the element to the array to keep track of the amount of cards clicked
     event.target.classList.add('show','open','check');
+    clicks = clicks + 1;
+    moves[0].innerHTML = clicks;
     if(clickedcards.length == 2){
-
       if (clickedcards[0].innerHTML == clickedcards[1].innerHTML){
         clickedcards[0].classList.add('match');
         clickedcards[1].classList.add('match');
