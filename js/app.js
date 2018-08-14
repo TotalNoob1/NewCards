@@ -1,8 +1,8 @@
 /*
  * Create a list that holds all of your cards
  */
- const icons = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor","fa fa-bolt", "fa fa-cube", "fa fa-anchor", "fa fa-leaf", "fa fa-bicycle", "fa fa-diamond","fa fa-camera-retro", "fa fa-leaf", "fa fa-camera-retro", "fa fa-bolt", "fa fa-bicycle",
- "fa fa-paper-plane-o", "fa fa-cube"];
+ const icons = ["fa-diamond", "fa-paper-plane-o", "fa-anchor","fa-bolt", "fa-cube", "fa-anchor", "fa-leaf", "fa-bicycle", "fa-diamond","fa-camera-retro", "fa-leaf", "fa-camera-retro", "fa-bolt", "fa-bicycle",
+ "fa-paper-plane-o", "fa-cube"];
 
 /*
  * Display the cards on the page
@@ -12,6 +12,17 @@
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
+
+let moves = document.getElementsByClassName('moves');
+let clicks = 0;
+shuffle(icons);
+var children = $(".card").children().removeClass(icons);
+console.log(children);
+for (x = 0; x < icons.length;x++){
+  children[x].classList.add(icons[x]);
+
+}
+
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -33,8 +44,6 @@ function mismatch() {
       two[0].classList.remove('show','open','check');
     }
 }
-let moves = document.getElementsByClassName('moves');
-let clicks = 0;
 $(".deck").click(function(){
   if( event.target.nodeName === 'LI')//check to make sure it a card
   {
@@ -48,7 +57,7 @@ $(".deck").click(function(){
         clickedcards[1].classList.add('match');
         clickedcards[0].classList.remove('check');
       }else {
-        setTimeout(function(){mismatch();}, 1000);
+        setTimeout(function(){mismatch();}, 500);
     }
       clickedcards.pop();
       clickedcards.pop();
