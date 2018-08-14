@@ -1,7 +1,8 @@
 /*
  * Create a list that holds all of your cards
  */
-
+ const icons = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor","fa fa-bolt", "fa fa-cube", "fa fa-anchor", "fa fa-leaf", "fa fa-bicycle", "fa fa-diamond","fa fa-camera-retro", "fa fa-leaf", "fa fa-camera-retro", "fa fa-bolt", "fa fa-bicycle",
+ "fa fa-paper-plane-o", "fa fa-cube"];
 
 /*
  * Display the cards on the page
@@ -24,13 +25,36 @@ function shuffle(array) {
 
     return array;
 }
+let clickedcards = [];
+function mismatch() {
+    var two = document.getElementsByClassName('check');
+    for (x = 0; x < two.length; x++){
+      two[0].classList.remove('show','open','check');
+      two[0].classList.remove('show','open','check');
+    }
+}
+
+
 $(".deck").click(function(){
-  if( event.target.nodeName === 'LI'){
-    event.target.classList.add('open');
-    event.target.classList.add('show');
-    console.log(123);
+  if( event.target.nodeName === 'LI')//check to make sure it a card
+  {
+    clickedcards.push(event.target);//add the element to the array to keep track of the amount of cards clicked
+    event.target.classList.add('show','open','check');
+    if(clickedcards.length == 2){
+
+      if (clickedcards[0].innerHTML == clickedcards[1].innerHTML){
+        clickedcards[0].classList.add('match');
+        clickedcards[1].classList.add('match');
+        clickedcards[0].classList.remove('check');
+      }else {
+        setTimeout(function(){mismatch();}, 1000);
+    }
+      clickedcards.pop();
+      clickedcards.pop();
+    }
   }
 });
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
