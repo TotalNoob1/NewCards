@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
- const icons = ["fa-diamond", "fa-paper-plane-o", "fa-anchor","fa-bolt", "fa-cube", "fa-anchor", "fa-leaf", "fa-bicycle", "fa-diamond","fa-camera-retro", "fa-leaf", "fa-camera-retro", "fa-bolt", "fa-bicycle",
+ const icons = ["fa-diamond", "fa-paper-plane-o", "fa-anchor","fa-bolt", "fa-cube", "fa-anchor", "fa-leaf", "fa-bicycle", "fa-diamond","fa-bomb", "fa-leaf", "fa-bomb", "fa-bolt", "fa-bicycle",
  "fa-paper-plane-o", "fa-cube"];
 
 /*
@@ -16,13 +16,23 @@
 let moves = document.getElementsByClassName('moves');
 let clicks = 0;
 shuffle(icons);
-var children = $(".card").children().removeClass(icons);
-console.log(children);
-for (x = 0; x < icons.length;x++){
-  children[x].classList.add(icons[x]);
+var children = $(".card").children().removeClass(icons);//removes all the icons from the cards
+let clickedcards = [];
 
+
+function clickshuffle() {
+  for (x = 0; x < icons.length;x++){
+    children[x].classList.add(icons[x]);
+  }
 }
-
+$(".restart").click(function functionName() {
+  $(".card").children().removeClass(icons,'show','open','check', 'match');
+  shuffle(icons);
+  clickshuffle();
+  moves[0].innerHTML = 0;
+  clicks = 0;
+});
+clickshuffle();
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -36,7 +46,6 @@ function shuffle(array) {
 
     return array;
 }
-let clickedcards = [];
 function mismatch() {
     var two = document.getElementsByClassName('check');
     for (x = 0; x < two.length; x++){
@@ -50,12 +59,13 @@ $(".deck").click(function(){
     clickedcards.push(event.target);//add the element to the array to keep track of the amount of cards clicked
     event.target.classList.add('show','open','check');
     clicks = clicks + 1;
-    moves[0].innerHTML = clicks;
+    moves[0].innerHTML = clicks;//tracks the amount of clicks
     if(clickedcards.length == 2){
       if (clickedcards[0].innerHTML == clickedcards[1].innerHTML){
         clickedcards[0].classList.add('match');
         clickedcards[1].classList.add('match');
         clickedcards[0].classList.remove('check');
+        clickedcards[1].classList.remove('check');
       }else {
         setTimeout(function(){mismatch();}, 500);
     }
@@ -64,8 +74,6 @@ $(".deck").click(function(){
     }
   }
 });
-
-
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
