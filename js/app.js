@@ -18,7 +18,7 @@ let clicks = 0;
 shuffle(icons);
 var children = $(".card").children().removeClass(icons);//removes all the icons from the cards
 let clickedcards = [];
-
+let matchedcards = [];
 
 function clickshuffle() {
   for (x = 0; x < icons.length;x++){
@@ -26,7 +26,8 @@ function clickshuffle() {
   }
 }
 $(".restart").click(function functionName() {
-  $(".card").children().removeClass(icons,'show','open','check', 'match');
+  $(".card").children().removeClass(icons,'show open check match');
+  $(".card").removeClass('show open check match')
   shuffle(icons);
   clickshuffle();
   moves[0].innerHTML = 0;
@@ -62,16 +63,25 @@ $(".deck").click(function(){
     moves[0].innerHTML = clicks;//tracks the amount of clicks
     if(clickedcards.length == 2){
       if (clickedcards[0].innerHTML == clickedcards[1].innerHTML){
-        clickedcards[0].classList.add('match');
-        clickedcards[1].classList.add('match');
-        clickedcards[0].classList.remove('check');
-        clickedcards[1].classList.remove('check');
+        for (x = 0; x < clickedcards.length; x++){
+          clickedcards[x].classList.add('match');
+          clickedcards[x].classList.remove('check');
+          matchedcards.push(clickedcards[x]);
+      }
       }else {
         setTimeout(function(){mismatch();}, 500);
     }
       clickedcards.pop();
       clickedcards.pop();
     }
+  }
+  if(matchedcards.length == 16){
+    setTimeout(function() {
+      alert("Congrats You Won")
+      for (x = 0; x <40; x++){
+        matchedcards.pop
+      }
+    }, 1000);
   }
 });
 /*
