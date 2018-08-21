@@ -15,10 +15,46 @@
 
 let moves = document.getElementsByClassName('moves');
 let clicks = 0;
-shuffle(icons);
 var children = $(".card").children().removeClass(icons);//removes all the icons from the cards
 let clickedcards = [];
 let matchedcards = [];
+let star =  document.getElementsByClassName('fa-star');
+let bugfixer = 0;
+let minutes = 0;
+let ones = 0;
+let tens = 0;
+let clock = $(".clock")
+var time = 0;
+shuffle(icons);
+
+function timer(){
+  setInterval(function () {
+    ones = ones + 1;
+    if (ones == 10){
+      tens = tens +1;
+      ones = 0;
+    }
+    if (tens == 6){
+      tens = 0;
+      minutes = minutes + 1;
+    }
+    ones = ones.toString();
+    tens = tens.toString();
+    minutes = minutes.toString();
+
+    time = minutes.concat(":",tens,ones)
+
+    clock[0].innerHTML = time;
+
+    ones = Number(ones);
+    tens = Number(tens);
+    minutes = Number(minutes);
+
+
+  }, 1000);
+
+  console.log(clock[0].innerHTML);
+}
 
 function clickshuffle() {
   for (x = 0; x < icons.length;x++){
@@ -76,13 +112,34 @@ $(".deck").click(function(){
     }
   }
   if(matchedcards.length == 16){
-    setTimeout(function() {
-      alert("Congrats You Won")
+    setTimeout(function() {//checks if you won
+      alert("Congrats You Won");
       for (x = 0; x <40; x++){
         matchedcards.pop
       }
     }, 1000);
   }
+  if(bugfixer == 0){
+    if (clicks > 10){
+      star[2].classList.remove("fa-star");
+      bugfixer = bugfixer + 1;
+    }
+  }
+  if (bugfixer == 1){
+    if(clicks > 20){
+      star[1].classList.remove("fa-star");
+      bugfixer = bugfixer + 1;
+    }
+  }
+  if(bugfixer == 2){
+    if (clicks > 30){
+      star[0].classList.remove("fa-star");
+      bugfixer = bugfixer + 1;
+    }
+  }
+});
+$(".start").click(function functionName() {
+  timer();
 });
 /*
  * set up the event listener for a card. If a card is clicked:
