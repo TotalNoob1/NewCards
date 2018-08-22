@@ -27,12 +27,14 @@ let ones = 0;
 let tens = 0;
 let clock = $(".clock")
 var time = 0;
-
+let newTime;
 /*<------------------------------------------------------------------------------THIS IS A DIVIDER--------------------------------------------------------------------------------------------------------------->*/
 shuffle(icons);
 /*<------------------------------------------------------------------------------THIS IS A DIVIDER--------------------------------------------------------------------------------------------------------------->*/
-function timer() {
-    setInterval(function() {
+function resetTime() {
+    newTime = setInterval(timer, 1000)
+
+    function timer() {
         ones = ones + 1;
         if (ones == 10) {
             tens = tens + 1;
@@ -53,7 +55,8 @@ function timer() {
         ones = Number(ones);
         tens = Number(tens);
         minutes = Number(minutes);
-    }, 1000);
+    }
+
 }
 /*<------------------------------------------------------------------------------THIS IS A DIVIDER--------------------------------------------------------------------------------------------------------------->*/
 function clickshuffle() {
@@ -68,6 +71,15 @@ $(".restart").click(function functionName() {
     clickshuffle();
     moves[0].innerHTML = 0;
     clicks = 0;
+    clock[0].innerHTML = "0:00";
+    ones = 0;
+    tens = 0;
+    minutes = 0;
+    clearInterval(newTime);
+    $(".start").click(function time() {
+        resetTime()
+        $(".start").off("click", time);
+    });
 });
 /*<------------------------------------------------------------------------------THIS IS A DIVIDER--------------------------------------------------------------------------------------------------------------->*/
 clickshuffle();
@@ -127,32 +139,32 @@ $(".deck").click(function() {
                 }
             }, 1000);
         }
-        if (bugfixer == 0) {
+        if (bugfixer == 0) //Makes it so that the same if statement doesn't get run twice {
             if (clicks > 20) {
                 star[2].classList.remove("fa-star");
                 bugfixer = bugfixer + 1;
                 stars = stars - 1;
             }
-        }
-        if (bugfixer == 1) {
-            if (clicks > 30) {
-                star[1].classList.remove("fa-star");
-                bugfixer = bugfixer + 1;
-                stars = stars - 1;
-            }
-        }
-        if (bugfixer == 2) {
-            if (clicks > 50) {
-                star[0].classList.remove("fa-star");
-                bugfixer = bugfixer + 1;
-                stars = stars - 1;
-            }
+    }
+    if (bugfixer == 1) {
+        if (clicks > 30) {
+            star[1].classList.remove("fa-star");
+            bugfixer = bugfixer + 1;
+            stars = stars - 1;
         }
     }
+    if (bugfixer == 2) {
+        if (clicks > 50) {
+            star[0].classList.remove("fa-star");
+            bugfixer = bugfixer + 1;
+            stars = stars - 1;
+        }
+    }
+
 });
 /*<------------------------------------------------------------------------------THIS IS A DIVIDER--------------------------------------------------------------------------------------------------------------->*/
 $(".start").click(function time() {
-    timer();
+    resetTime();
     $(".start").off("click", time);
 });
 /*
