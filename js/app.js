@@ -76,6 +76,8 @@ $(".restart").click(function functionName() {
     tens = 0;
     minutes = 0;
     clearInterval(newTime);
+    clickedcards.pop();
+    clickedcards.pop();
     $(".start").click(function time() {
         resetTime()
         $(".start").off("click", time);
@@ -101,8 +103,7 @@ function shuffle(array) {
 /*<------------------------------------------------------------------------------THIS IS A DIVIDER--------------------------------------------------------------------------------------------------------------->*/
 function mismatch() {
     var two = document.getElementsByClassName('check');
-    for (x = 0; x < two.length; x++) {
-        two[0].classList.remove('show', 'open', 'check');
+    for (x = 0; x < two.length + 2; x++) {
         two[0].classList.remove('show', 'open', 'check');
     }
 }
@@ -125,8 +126,12 @@ $(".deck").click(function() {
                 } else {
                     setTimeout(function() {
                         mismatch();
+                        clickedcards.pop();
+                        clickedcards.pop();
+                        clickedcards.pop();// this is to make sure that more then one card can be clicked
                     }, 500);
                 }
+                clickedcards.pop();
                 clickedcards.pop();
                 clickedcards.pop();
             }
