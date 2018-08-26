@@ -82,31 +82,31 @@ $(".restart").click(function functionName() {
     clearInterval(newTime);
     clickedcards.pop();
     clickedcards.pop();
-    for (x = 0; x  < 2; x++){
-      moves[x].innerHTML = 0;
-      clock[x].innerHTML = "0:00";
+    for (x = 0; x < 2; x++) {
+        moves[x].innerHTML = 0;
+        clock[x].innerHTML = "0:00";
     }
-    if (clicks >= 20){
-    if (1 == bugfixer){
-      newstar[5].classList.add("fa-star");
-      newstar[2].classList.add("fa-star");
-      console.log(123);
-    }
-    if (2 == bugfixer){
-      newstar[4].classList.add("fa-star");
-      newstar[1].classList.add("fa-star");
-    }
-    if (3 == bugfixer){
-      newstar[3].classList.add("fa-star");
-      newstar[0].classList.add("fa-star");
+    if (clicks >= 20) {
+        if (1 == bugfixer) {
+            newstar[5].classList.add("fa-star");
+            newstar[2].classList.add("fa-star");
+            console.log(123);
+        }
+        if (2 == bugfixer) {
+            newstar[4].classList.add("fa-star");
+            newstar[1].classList.add("fa-star");
+        }
+        if (3 == bugfixer) {
+            newstar[3].classList.add("fa-star");
+            newstar[0].classList.add("fa-star");
 
+        }
     }
+    if (wins == 1) {
+        win[0].style.display = "none";
+        game[0].style.display = "flex";
+        wins = wins - 1;
     }
-    if (wins == 1){
-    win[0].style.display = "none";
-    game[0].style.display = "flex";
-    wins = wins - 1;
-  }
     $(".start").click(function time() {
         resetTime()
         $(".start").off("click", time);
@@ -158,7 +158,7 @@ $(".deck").click(function() {
                         mismatch();
                         clickedcards.pop();
                         clickedcards.pop();
-                        clickedcards.pop();// this is to make sure that more then one card can be clicked
+                        clickedcards.pop(); // this is to make sure that more then one card can be clicked
                     }, 500);
                 }
                 clickedcards.pop();
@@ -208,7 +208,6 @@ $(".start").click(function time() {
     resetTime();
     $(".start").off("click", time);
 });
-
 
 
 
