@@ -1,26 +1,7 @@
 # Memory Game Project
 
-## Table of Contents
+## Game 
+The game is a smiple matching game. You will have to flip over all the cards to win. To begin the game click a card.
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
-
-## Instructions
-
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Game
-
-Added the javascript to make the game playable.
-
-The game has a timer, clickable cards that turn green when match, a tracker for clicks ,stars to show how well you done, and a summary to the end of the game. 
+## Bugs
+There is one bug that allows you to have 3 cards fliped over at a time however it should have no effect on the game.
