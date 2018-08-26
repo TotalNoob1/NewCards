@@ -18,3 +18,9 @@ For specific, detailed instructions, look at the project instructions in the [Ud
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Game
+
+Added the javascript to make the game playable.
+
+The game has a timer, clickable cards that turn green when match, a tracker for clicks ,stars to show how well you done, and a summary to the end of the game. 
